@@ -1,6 +1,4 @@
-import java.util.Random;
-
-public class Algos {
+public class ArrayHandler {
 
     private int[] theArray = new int[50];
     private int arraySize = 10;
@@ -46,16 +44,48 @@ public class Algos {
         }
     }
 
+    public void insertValue(int value){
+        if(arraySize < 50){
+            theArray[arraySize] = value;
+            arraySize++;
+        }
+    }
+
+    public String linearSearchForValue(int value){
+        boolean valueInArray = false;
+        String indexsWithValue = "";
+
+        System.out.println("The value was found in the following:" );
+
+        for(int i = 0; i < arraySize; i++){
+            if(theArray[i] == value){
+                valueInArray = true;
+                System.out.println(i + " ");
+                indexsWithValue += i + " ";
+            }
+        }
+
+        if(!valueInArray){
+            indexsWithValue = "None";
+            System.out.print(indexsWithValue);
+        }
+        System.out.println();
+
+        return indexsWithValue;
+    }
 
     public static void main(String[] args){
 
-        Algos algo = new Algos();
+        ArrayHandler algo = new ArrayHandler();
         algo.generateRandomArray();
         algo.printArray();
         System.out.println("Value at 3: " + algo.getValueAtIndex(3));
         System.out.println("Array contains 13: " + algo.doesArrayContainValue(13));
-        algo.deleteIndex(9);
+        algo.deleteIndex(4);
         algo.printArray();
+        algo.insertValue(14);
+        algo.printArray();
+        algo.linearSearchForValue(12);
     }
 
 
